@@ -4,3 +4,78 @@ git add README.md
 git commit -m "first commit"
 git remote add origin https://github.com/Asif-91/hard-rock.git
 git push -u origin master
+
+//const search = document.getElementById('button');
+const artist = document.getElementById('artist-name');
+const album = document.getElementById('album-name');
+const songs = document.getElementById('songLyrics')
+const inputValue = document.getElementById('input-value').value;
+if(inputValue == ''){
+    alert('Please write a song name.then try again....')
+}
+else{
+    fetch('https://api.lyrics.ovh/suggest/'+inputValue+'')
+        .then(res => res.json())
+        .then(data =>  {
+            console.log(data);
+            const dataInfo = data.data;
+                const list = dataInfo.slice(0,10);
+                for(let i = 0; i < 10; i++) {
+                    const info = list[i];
+                    songLyrics.innerHTML = info;
+
+                    const name = data.data[0].artist.name;
+                    const titleName = data.data[0].title;
+                    const albumName = data.data[0].album;
+
+                function template() {
+                    songLyrics.innerHTML += `
+                    <div class="single-result row align-items-center my-3 p-3">
+                        <div class="col-md-9">
+                            <h3 class="lyrics-name" id="title-name">${titleName}</h3>
+                            <p class="author lead">by <span id="artist-name">${name}</span></p>
+                            <p class="author lead">Album: <span id="album-name">${albumName}</span></p>
+                        </div>
+                        <div class="col-md-3 text-md-right text-center">
+                            <button class="btn btn-success">Get Lyrics</button>
+                        </div>
+                    </div>`;
+                }
+                }
+        })
+
+}
+button.addEventListener('click', function () {
+
+    
+});
+function lyrics(number){
+    document.getElementById('pre').style.display = "block";
+
+    const name = data.data[number].artist.name;
+    const titleName = data.data[number].title;
+    songLyrics(artist, title);
+
+    function songLyrics(artist, title) {
+        fetch(`https://api.lyrics.ovh/v1/${artist}${title}`)
+        .then(res => res.json())
+        .then(data => {
+            const songLyrics = data.lyrics;
+            document.getElementById(lyrics).innerText = songLyrics;
+            document.getElementById('lyricsName').innerText = artist + " - " + title;
+        })
+    }
+
+}
+document.getElementById('button').addEventListener('click', function() {
+    lyrics(0);
+});
+document.getElementById('button').addEventListener('click', function() {
+    lyrics(1);
+});
+document.getElementById('button').addEventListener('click', function() {
+    lyrics(2);
+});
+document.getElementById('button').addEventListener('click', function() {
+    lyrics(3);
+});

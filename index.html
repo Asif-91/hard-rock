@@ -46,13 +46,13 @@
             <div class="search-bar col-md-6 mx-auto">
                 <h1 class="text-center">Lyrics Search</h1>
                 <div class="search-box my-5">
-                    <input type="text" class="form-control" placeholder="Enter your artist song name">
-                    <button class="btn btn-success search-btn">Search</button>
+                    <input id="inputValue" type="text" class="form-control" placeholder="Enter your artist song name">
+                    <button id="button" class="btn btn-success search-btn">Search</button>
                 </div>
             </div>
             <!-- === Simple results === -->
             <div class="d-flex justify-content-center">
-                <div class="">
+                <div id="lyricsList" class="">
                     <p class="author lead"><strong>Purple Noon</strong> Album by <span>Washed Out</span> <button class="btn btn-success">Get Lyrics</button></p>
                     <p class="author lead"><strong>Purple Noon</strong> Album by <span>Washed Out</span> <button class="btn btn-success">Get Lyrics</button></p>
                     <p class="author lead"><strong>Purple Noon</strong> Album by <span>Washed Out</span> <button class="btn btn-success">Get Lyrics</button></p>
@@ -171,14 +171,15 @@
                     <div class="col-md-3 text-md-right text-center">
                         <button class="btn btn-success">Get Lyrics</button>
                     </div>
-                </div>
+                </div>  
                 <!-- ./ single result -->
 
                 <!-- single result -->
                 <div class="single-result row align-items-center my-3 p-3">
                     <div class="col-md-9">
-                        <h3 class="lyrics-name">Purple Noon</h3>
-                        <p class="author lead">Album by <span>Washed Out</span></p>
+                        <h3 class="lyrics-name" id="title-name">Purple Noon</h3>
+                        <p class="author lead">by <span id="artist-name">Washed Out</span></p>
+                        <p class="author lead">Album: <span id="album-name">Washed Out</span></p>
                     </div>
                     <div class="col-md-3 text-md-right text-center">
                         <button class="btn btn-success">Get Lyrics</button>
@@ -215,6 +216,8 @@
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
+    <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
